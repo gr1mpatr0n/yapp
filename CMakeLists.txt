@@ -9,12 +9,13 @@ target_include_directories(yapp INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
-target_compile_features(yapp INTERFACE cxx_std_11)
+target_compile_features(yapp INTERFACE cxx_std_17)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 install(FILES include/yapp.hpp
+              include/parser.hpp
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 

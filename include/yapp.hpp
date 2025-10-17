@@ -6,9 +6,16 @@
 #include <iomanip>
 #include <map>
 #include <cctype>
+#include <cstddef>
+#include <algorithm>
 #include <stdexcept>
 
 namespace yapp {
+
+struct QueryParam {
+    std::string_view key;
+    std::string_view value;
+};
 
 class URL {
 public:
@@ -90,11 +97,9 @@ public:
         return new_url;
     }
 
-    URL operator%=(std::initializer_list<std::pair<std::string, std::string>> params) const {
+    URL operator%(const QueryParam &qp) const {
         URL new_url = *this;
-        for (const auto &param : params) {
-            new_url.query_[param.first] = param.second;
-        }
+        new_url.query_[std::string(qp.key)] = qp.value;
         return new_url;
     }
 

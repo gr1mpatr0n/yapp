@@ -26,9 +26,3 @@ std::optional<short> get_default_port_for_scheme(std::string_view scheme) noexce
     if (scheme == "file")  return -1;
     return std::nullopt;
 }
-
-void remove_tab_newline(std::string &url) noexcept {
-    url.erase(std::remove_if(url.begin(), url.end(),
-        [](char c) { return c == '\t' || c == '\r' || c == '\n'; }),
-        url.end());
-}

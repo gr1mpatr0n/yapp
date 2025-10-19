@@ -1,14 +1,12 @@
 #include <yapp.hpp>
-#include <parser.hpp>
 #include <iostream>
 
 int main(int argc, char* argv[]) {
     using namespace yapp;
 
-    auto api = URL("https://api.github.com")
-        / "repos" / "owner" / "repo" / "issues";
+    URL url("https://apple.com");
 
-    std::cout << api.str() << std::endl;
-    
+    url.parse_input("\t\t\t\r\rhttps://www.apple.com\t\t\t");
+
     return 0;
 }
